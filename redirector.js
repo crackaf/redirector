@@ -2,8 +2,8 @@
 path = window.location.search.replace('?', ''); //get current url parameters
 
 if (path.length == 0) {
-    document.getElementById("redirectDetail").innerHTML
-        = "You will be redirected to " + window.location.href + "/README.md in 5 seconds.";
+    document.getElementById("redirectDetail").innerHTML =
+        "You will be redirected to " + window.location.href + "/README.md in 5 seconds.";
     setTimeout(() => window.location.href = 'README.md', 5000);
 }
 else {
@@ -14,7 +14,7 @@ else {
             console.log('Success:', data);
             if (path in data) {
                 document.getElementById("redirectDetail").innerHTML
-                    = "You will be redirected to " + data[path] + " in 5 seconds.";
+                    = 'You will be redirected to <a href="' + data[path] + '">' + data[path] + '</a> in 5 seconds.';
                 setTimeout(() => window.location.href = data[path], 5000);
             }
             else {
