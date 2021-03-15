@@ -1,6 +1,6 @@
 
-path = window.location.pathname //get current url
-path.replace("/redirector/", ""); //removing prefix
+path = window.location.search //get current url parameters
+path.replace("?", ""); //removing prefix
 document.write("Redirect requested for ", path);
 fetch('https://ghostoverflow.github.io/redirector/data.json')
     .then(response => response.json())
