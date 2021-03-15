@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+    <p id="datajson"></p>
 
     <script>
         var ddd;
@@ -27,8 +27,7 @@
         }
 
         readTextFile("text.txt"); //<= Call function ===== don't need "file:///..." just the path 
-        console.log(ddd);
-        console.log("aasasasg")
+        document.getElementById("datajson").innerHTML=ddd+"/nmalik";
     </script>
 </body>
 

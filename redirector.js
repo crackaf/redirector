@@ -1,4 +1,4 @@
-
+import data from './data.json'
 
 function start() {
     path = window.location.pathname //get current url
