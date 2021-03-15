@@ -12,22 +12,21 @@
 
 
     <script>
+        var ddd;
         function readTextFile(file) {
             var rawFile = new XMLHttpRequest(); // XMLHttpRequest (often abbreviated as XHR) is a browser object accessible in JavaScript that provides data in XML, JSON, but also HTML format, or even a simple text using HTTP requests.
             rawFile.open("GET", file, true); // open with method GET the file with the link file ,  false (synchronous)
-            var allText;
             rawFile.onreadystatechange = function () {
                 if (rawFile.readyState === 4 && rawFile.status === 200) // readyState = 4: request finished and response is ready // status 200: "OK"
                 {
-                    allText = rawFile.responseText; //  Returns the response data as a string
-                    console.log(allText); // display text on the console
+                    ddd = rawFile.responseText; //  Returns the response data as a string
+                    console.log(ddd); // display text on the console
                 }
             }
             rawFile.send(null); //Sends the request to the server Used for GET requests with param null
-            return allText;
         }
 
-        var ddd = readTextFile("text.txt"); //<= Call function ===== don't need "file:///..." just the path 
+        readTextFile("text.txt"); //<= Call function ===== don't need "file:///..." just the path 
         console.log(ddd);
         console.log("aasasasg")
     </script>
