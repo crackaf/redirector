@@ -1,4 +1,6 @@
+/*
 
+*/
 path = window.location.search.replace('?', ''); //get current url parameters
 
 if (path.length == 0) {
@@ -19,7 +21,7 @@ else {
             }
             else {
                 document.getElementById("redirectDetail").innerHTML
-                    = 'Could\'nt find the specific adrress. Please contact at <a href="https://github.com/ghostoverflow/redirector">Github Repo</a>.';
+                    = 'Could\'nt find the specific adrress. Please contact at <a href="https://github.com/ghostoverflow/redirector/">Github Repo</a>.';
             }
         })
         .catch(error => console.error('Error:', error));
