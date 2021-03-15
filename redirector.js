@@ -1,26 +1,14 @@
-import data from './data.json'
 
-function start() {
-    path = window.location.pathname //get current url
-    path.replace("/redirector/", ""); //removing prefix
+path = window.location.pathname //get current url
+path.replace("/redirector/", ""); //removing prefix
 
-    //loading json data
-    readTextFile("data.json", function (text) {
-        var data = JSON.parse(text);
-        console.log(data);
+fetch('https://ghostoverflow.github.io/redirector/data.json')
+    .then(response => response.json())
+    .then(result => {
+        console.log('Success:', result);
+        //document.getElementById("redirectDetail").innerHTML = result;
 
-    });
+        
 
-}
-
-function readTextFile(file, callback) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType("application/json");
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function () {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
-        }
-    }
-    rawFile.send(null);
-}
+    })
+    .catch(error => console.error('Error:', error));
