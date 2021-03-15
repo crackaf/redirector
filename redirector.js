@@ -5,33 +5,23 @@ function start() {
     path.replace("/redirector/", ""); //removing prefix
 
     //loading json data
-
+    loadFile("data.json")
 }
 
-function loadFile() {
-    var input, file, fr;
+function loadFile(file) {
 
-    if (typeof window.FileReader !== 'function') {
-        alert("The file API isn't supported on this browser yet.");
-        return;
-    }
+    fr = new FileReader();
+    fr.onload = receivedText;
+    fr.readAsText(file);
 
-    input = document.getElementById('fileinput');
-    if (!input) {
-        alert("Um, couldn't find the fileinput element.");
-    }
-    else if (!input.files) {
-        alert("This browser doesn't seem to support the `files` property of file inputs.");
-    }
-    else if (!input.files[0]) {
-        alert("Please select a file before clicking 'Load'");
-    }
-    else {
-        file = input.files[0];
-        fr = new FileReader();
-        fr.onload = receivedText;
-        fr.readAsText(file);
-    }
+
+    // const reader = new FileReader();
+    // reader.addEventListener(file, (event) => {
+    //     const result = event.target.result;
+    // });
+    // reader.readAsDataURL(file);
+
+    // console.log(reader)
 
     function receivedText(e) {
         let lines = e.target.result;
