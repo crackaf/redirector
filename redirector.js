@@ -5,26 +5,22 @@ function start() {
     path.replace("/redirector/", ""); //removing prefix
 
     //loading json data
-    loadFile("data.json")
+    readTextFile("data.json", function (text) {
+        var data = JSON.parse(text);
+        console.log(data);
+
+    });
+
 }
 
-function loadFile(file) {
-
-    fr = new FileReader();
-    fr.onload = receivedText;
-    fr.readAsText(file);
-
-
-    // const reader = new FileReader();
-    // reader.addEventListener(file, (event) => {
-    //     const result = event.target.result;
-    // });
-    // reader.readAsDataURL(file);
-
-    // console.log(reader)
-
-    function receivedText(e) {
-        let lines = e.target.result;
-        var newArr = JSON.parse(lines);
+function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function () {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
     }
+    rawFile.send(null);
 }

@@ -25,10 +25,12 @@
         }
 
         //usage:
-        readTextFile("data.json", function (text) {
+        mydata = readTextFile("data.json", function (text) {
             var data = JSON.parse(text);
-            console.log(data);
+
+            return data;
         });
+        console.log(mydata);
     </script>
 </body>
 
