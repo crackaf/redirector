@@ -8,8 +8,11 @@ fetch('https://ghostoverflow.github.io/redirector/data.json')
         console.log('Success:', data);
         //document.getElementById("redirectDetail").innerHTML = result;
         if (path in data) {
-            //document.getElementById("redirectDetail").innerHTML = "You will be redirected to " + data[path] + " in 5 seconds.";
+            document.getElementById("redirectDetail").innerHTML = "You will be redirected to " + data[path] + " in 5 seconds.";
             setTimeout(() => window.location.href = data[path], 5000);
+
+        }
+        else {
 
         }
     })
