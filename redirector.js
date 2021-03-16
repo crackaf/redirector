@@ -4,8 +4,7 @@
 path = window.location.search.replace('?', ''); //get current url parameters
 
 if (path.length == 0) {
-    document.getElementById("redirectDetail").innerHTML =
-        "You will be redirected to " + window.location.href + "/README.md in 5 seconds.";
+    document.getElementById("redirectDetail").innerHTML = "You will be redirected to " + window.location.href + "/README.md in 5 seconds.";
     setTimeout(() => window.location.href = 'README.md', 5000);
 }
 else {
