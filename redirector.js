@@ -17,7 +17,7 @@ if (path.length == 0) {
     setInterval(() => {
         sec = 3;
         document.getElementById("redirectDetail").innerHTML = "You will be redirected to " + window.location.href + "/README.md in " + sec + " seconds.";
-        sec += 1;
+        sec -= 1;
     }, 1000);
     setTimeout(() => window.location.href = 'README.md', 3000);
 }
@@ -30,7 +30,8 @@ else {
             if (path in data) {
                 setInterval(() => {
                     sec = 3;
-                    document.getElementById("redirectDetail").innerHTML = 'You will be redirected to <a href="' + data[path] + '">' + data[path] + '</a> in ' + sec + ' seconds.'; sec += 1;
+                    document.getElementById("redirectDetail").innerHTML = 'You will be redirected to <a href="' + data[path] + '">' + data[path] + '</a> in ' + sec + ' seconds.'; 
+                    sec -= 1;
                 }, 1000);
 
                 setTimeout(() => window.location.href = data[path], 3000);
