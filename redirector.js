@@ -14,7 +14,6 @@
 path = window.location.search.replace('?', '').replace('#', '').toLowerCase(); //get current url parameters
 
 if (path.length == 0) {
-
     var timeleft = 3;
     var redirectTimer = setInterval(function () {
         if (timeleft <= 0) {
@@ -24,12 +23,6 @@ if (path.length == 0) {
         document.getElementById("redirectDetail").innerHTML = "You will be redirected to " + window.location.href + "/README.md in " + timeleft + " seconds.";;
         timeleft -= 1;
     }, 1000);
-    // setInterval(() => {
-    //     sec = 3;
-
-    //     sec -= 1;
-    // }, 1000);
-    // setTimeout(() => window.location.href = 'README.md', 3000);
 }
 else {
     document.write("Redirect requested for ", path);
@@ -48,13 +41,6 @@ else {
                     document.getElementById("redirectDetail").innerHTML = 'You will be redirected to <a href="' + data[path] + '">' + data[path] + '</a> in ' + timeleft + ' seconds.';
                     timeleft -= 1;
                 }, 1000);
-                // setInterval(() => {
-                //     sec = 3;
-                //     document.getElementById("redirectDetail").innerHTML = 'You will be redirected to <a href="' + data[path] + '">' + data[path] + '</a> in ' + sec + ' seconds.'; 
-                //     sec -= 1;
-                // }, 1000);
-
-                // setTimeout(() => window.location.href = data[path], 3000);
             }
             else {
                 document.getElementById("redirectDetail").innerHTML
