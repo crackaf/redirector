@@ -11,30 +11,50 @@
  * @author Hunzlah Malik @ghostoverflow
 *********************************************************/
 
-path = window.location.search.replace('?', '').replace('#', ''); //get current url parameters
+path = window.location.search.replace('?', '').replace('#', '').toLowerCase(); //get current url parameters
 
 if (path.length == 0) {
-    setInterval(() => {
-        sec = 3;
-        document.getElementById("redirectDetail").innerHTML = "You will be redirected to " + window.location.href + "/README.md in " + sec + " seconds.";
-        sec -= 1;
+
+    var timeleft = 3;
+    var redirectTimer = setInterval(function () {
+        if (timeleft <= 0) {
+            clearInterval(redirectTimer);
+            window.location.href = 'README.md'
+        }
+        document.getElementById("redirectDetail").innerHTML = "You will be redirected to " + window.location.href + "/README.md in " + timeleft + " seconds.";;
+        timeleft -= 1;
     }, 1000);
-    setTimeout(() => window.location.href = 'README.md', 3000);
+    // setInterval(() => {
+    //     sec = 3;
+
+    //     sec -= 1;
+    // }, 1000);
+    // setTimeout(() => window.location.href = 'README.md', 3000);
 }
 else {
     document.write("Redirect requested for ", path);
-    fetch('https://ghostoverflow.github.io/redirector/data.json')
+    fetch('https://raw.githubusercontent.com/ghostoverflow/redirector/main/data.json')
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
             if (path in data) {
-                setInterval(() => {
-                    sec = 3;
-                    document.getElementById("redirectDetail").innerHTML = 'You will be redirected to <a href="' + data[path] + '">' + data[path] + '</a> in ' + sec + ' seconds.'; 
-                    sec -= 1;
-                }, 1000);
 
-                setTimeout(() => window.location.href = data[path], 3000);
+                var timeleft = 3;
+                var redirectTimer = setInterval(function () {
+                    if (timeleft <= 0) {
+                        clearInterval(redirectTimer);
+                        window.location.href = data[path]
+                    }
+                    document.getElementById("redirectDetail").innerHTML = 'You will be redirected to <a href="' + data[path] + '">' + data[path] + '</a> in ' + timeleft + ' seconds.';
+                    timeleft -= 1;
+                }, 1000);
+                // setInterval(() => {
+                //     sec = 3;
+                //     document.getElementById("redirectDetail").innerHTML = 'You will be redirected to <a href="' + data[path] + '">' + data[path] + '</a> in ' + sec + ' seconds.'; 
+                //     sec -= 1;
+                // }, 1000);
+
+                // setTimeout(() => window.location.href = data[path], 3000);
             }
             else {
                 document.getElementById("redirectDetail").innerHTML
