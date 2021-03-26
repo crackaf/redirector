@@ -8,7 +8,7 @@
  * crosscheks the parameter with data.json and if found
  * redirects to the specific address
  * 
- * @author Hunzlah Malik @ghostoverflow
+ * @author Hunzlah Malik @ghostdart
 *********************************************************/
 
 path = window.location.search.replace('?', '').replace('#', '').toLowerCase(); //get current url parameters
