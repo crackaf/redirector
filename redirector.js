@@ -28,7 +28,7 @@ if (path.length == 0) { // if there is no parameter
 }
 else { // there is parameter
     document.write("Redirect requested for ", path);
-    fetch('/data.json') // fetch the parameter->link file
+    fetch('https://github.com/ghostdart/redirector/blob/c6485b3c722cca63b7f5a676ff5cc909c8de8f2d/data.json') // fetch the parameter->link file
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
